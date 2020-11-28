@@ -10,7 +10,7 @@
   <body>
     <header class="section header">
       <h1 class="header__title">Karina Rao</h1>
-      <p class="header__subtitle">Life through my lens</p>
+      <p class="heading-typography header__subtitle">Life through my lens</p>
 
       <nav>
         <ul class="header__nav">
@@ -24,80 +24,96 @@
 
     <main>
       <section class="section my-story" id="my-story">
-        <div class="my-story__grid">
-          <div class="my-story__title-container">
-            <h2 class="my-story__title">My Story</h2>
-          </div>
-  
+        <div class="my-story__content-container">
           <img
             src="media/portrait.jpg"
             alt="Portrait of Karina Rao"
             height="500"
             class="my-story__portrait"
           />
-  
-          <div class="my-story__film-preview-container">
-          <img
-            src="media/my-story-thumbnail.png"
-            alt="'My Story of Home, Identity, and Belonging' video preview"
-            width="400"
-            class="my-story__film-preview"
-          />
-        </div>
-  
-          <div class="my-story__film-link-container">
-            <a
-              class="my-story__film-link button"
-              href="https://www.youtube.com/watch?v=rh9N5DdXCXU"
+
+          <div class="my-story__aside-items">
+            <div
+              class="labelled-heading my-story__title-container labelled-heading--label-before"
             >
-              Watch the film
-            </a>
+              <p class="labelled-heading__label my-story__title-label">
+                Featured Work
+              </p>
+              <h2 class="my-story__title">My Story</h2>
+            </div>
+
+            <div class="my-story__film-preview-container">
+              <img
+                src="media/my-story-thumbnail.png"
+                alt="'My Story of Home, Identity, and Belonging' video preview"
+                width="400"
+                class="my-story__film-preview"
+              />
+            </div>
+
+            <div class="my-story__film-link-container">
+              <a
+                class="my-story__film-link button"
+                href="https://www.youtube.com/watch?v=rh9N5DdXCXU"
+              >
+                View film
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section travel-videos" id="travel-videos">
-        <h2>The World Through My Lens</h2>
+        <div class="labelled-heading">
+          <h2>The World Through My Lens</h2>
+          <p class="labelled-heading__label">Travel Films</p>
+        </div>
 
-        <blockquote>
-          <p>
-            We shall not cease from exploration, and the end of all our
-            exploring will be to arrive where we started and know the place for
-            the first time.
-          </p>
-          <footer>
-            <cite>T.S. Eliot</cite>
-          </footer>
-        </blockquote>
-
-        <a
-          href="https://www.youtube.com/watch?v=PIaVf1e_zeo&list=PLmE5VTdmB4643IuxRZqnhfyT2ALjHroLr&ab_channel=KarinaR."
-        >
+        <div class="travel-videos__content">
           <img
             src="media/travel-thumbnail.png"
-            alt="View Karina's Travel Videos playlist"
+            alt="Preview image of 'Inspired in India', a travel film by Karina"
             width="400"
           />
-        </a>
+
+          <div class="travel-videos__right">
+            <blockquote class="travel-videos__quote">
+              <p>
+                We shall not cease from exploration, and the end of all our
+                exploring will be to arrive where we started and know the place
+                for the first time.
+              </p>
+              <footer>
+                <cite class="travel-videos__quote-author">T.S. Eliot</cite>
+              </footer>
+            </blockquote>
+
+            <a
+              class="my-story__film-link button"
+              href="https://www.youtube.com/watch?v=PIaVf1e_zeo&list=PLmE5VTdmB4643IuxRZqnhfyT2ALjHroLr&ab_channel=KarinaR."
+            >
+              View playlist
+            </a>
+          </div>
+        </div>
       </section>
 
       <section class="section blog" id="blog">
-        <h2>Blog</h2>
+        <div class="labelled-heading">
+          <h2>karina.thoughts</h2>
+          <p class="labelled-heading__label">Visual Blog</p>
+        </div>
 
-        <p>My inner thoughts, with artistic flair</p>
+        <img
+          src="media/my-thoughts-collage.png"
+          alt="Collage of posts from @karina.thoughts on Instagram. Each post is a quote handwritten in calligraphy."
+          width="600"
+          class="blog__image"
+        />
 
-        <figure>
-          <img
-            src="media/my-thoughts-collage.png"
-            alt="Collage of posts from karina.thoughts on Instagram"
-            width="600"
-          />
-
-          <figcaption>
-            Explore further on Instagram
-            <a href="https://instagram.com/karina.thoughts">@karina.thoughts</a>
-          </figcaption>
-        </figure>
+        <a class="button" href="https://instagram.com/karina.thoughts">
+          Explore on Instagram
+        </a>
       </section>
 
       <section class="section collaborations" id="collaborations">

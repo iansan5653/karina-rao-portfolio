@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap&family=Playfair+Display:ital,wght@1,500&display=swap');
+
 :root,
 body {
   --color-primary: #6e6b96;
@@ -9,13 +11,19 @@ body {
   --color-fill-alternate: #f3eee6;
   --color-wash: rgba(26, 48, 46, 0.75);
 
-  --font-family-headings: serif;
+  --font-family-headings: "Playfair Display", serif;
 
-  font-size: 20px;
+  --transition-base-duration: 0.25s;
+  --transition-timing-function: ease;
+
+  font-family: "Asap";
+  font-size: 16px;
+  
   background-color: var(--color-fill);
   color: var(--color-contrast);
 
   margin: 0;
+  scroll-snap-type: y proximity;
 }
 
 a {
@@ -32,23 +40,27 @@ a:focus {
   outline: 2px dotted var(--color-contrast);
 }
 
-p {
+p, blockquote {
   margin: 0;
 }
 
 .button {
   padding: 0.5em;
   border: 2px solid var(--color-primary);
-  color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-fill-alternate);
   text-transform: uppercase;
   display: inline-block;
   text-align: center;
+  transition-duration: var(--transition-base-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: color, background-color;
 }
 
 .button:hover, .button:focus {
   text-decoration: none;
-  background-color: var(--color-primary);
-  color: var(--color-fill-alternate);
+  background-color: var(--color-fill-alternate);
+  color: var(--color-primary);
 }
 
 /** all sections */
@@ -56,10 +68,12 @@ p {
 .section {
   min-height: 100vh;
   padding: 1rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  scroll-snap-align: start;
 }
 
 .section:nth-child(even) {
@@ -68,10 +82,28 @@ p {
 
 .section h2 {
   font-family: var(--font-family-headings);
-  text-transform: uppercase;
+  text-transform: lowercase;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.25em;
   margin: 0;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  line-height: 1em;
+}
+
+.labelled-heading__label {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.labelled-heading .labelled-heading__label {
+  margin-top: 0.5em;
+}
+
+.labelled-heading__label.labelled-heading--label-before .labelled-heading__label {
+  margin-bottom: -0.5em;
 }
 
 /** header **/
@@ -82,15 +114,30 @@ p {
 }
 
 .header__title {
-  font-family: var(--font-family-headings);
   margin: 0;
   text-transform: uppercase;
   font-size: 5rem;
+  font-family: var(--font-family-headings);
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 
 .header__subtitle {
+  font-family: var(--font-family-headings);
+  font-weight: 400;
+  letter-spacing: 0.05em;
   font-style: italic;
   font-size: 1.5rem;
+  text-transform: lowercase;
+  letter-spacing: 0.125em;
+}
+
+.header__subtitle::before, .header__subtitle::after {
+  content: "";
+  border: 0.5px solid var(--color-tertiary);
+  width: 2em;
+  margin: 0.25em 0.5em;
+  display: inline-block;
 }
 
 .header__nav {
@@ -111,63 +158,129 @@ p {
 
 /** my story **/
 
-.my-story {
-  height: 100vh;
-  overflow: hidden;
-  padding: 0;
-}
-
-.my-story__grid {
+.my-story__content-container {
   display: grid;
-  grid-template: repeat(12, minmax(0, 1fr)) / repeat(12, minmax(0, 1fr));
-  width: 100vh;
-}
-
-.my-story__title-container {
-  grid-row:  5 / span 2;
-  grid-column: 9 / span 3;
-  z-index: 1;
-  text-align: left;
-  padding: 1rem;
-  display: flex;
-  align-items: flex-end;
-}
-
-.my-story__title-container > .my-story__title {
-  text-align: left;
+  --width: 80vw;
+  --max-width: 75rem;
+  --grid-cell-width: calc(min((var(--width) / 10), (var(--max-width) / 10)));
+  grid-template: repeat(10, 1fr) / repeat(10, var(--grid-cell-width));
+  width: var(--width);
+  max-width: var(--max-width);
+  height: auto;
 }
 
 .my-story__portrait {
-  grid-column: 1 / span 8;
-  grid-row: 2 / span 10;
+  grid-column: 1 / span 10;
+  grid-row: 1 / span 10;
   height: auto;
   width: 100%;
-  z-index: 0;
+  opacity: 0.4;
 }
 
-.my-story__film-preview-container {
-  grid-column: 8 / span 5;
-  grid-row: 7 / span 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
-.my-story__film-preview {
-  max-width: 110%;
-  height: 100%;
-}
-
-.my-story__film-link-container {
-  grid-column: 9 / span 4;
-  grid-row: 10 / span 2;
-  z-index: 1;
+.my-story__aside-items {
+  grid-column: 2 / span 8;
+  grid-row: 6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+  height: 0;
+  z-index: 1;
+}
+
+.my-story__title-container {
   padding: 1rem;
+  margin-bottom: -0.125em;
+  font-size: 1.1em;
+}
+
+.my-story__film-preview-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.my-story__film-preview {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.my-story__film-link-container {
+  padding: 1rem;
+}
+
+@media only screen and (min-width: 50rem) {
+  .my-story__portrait {
+    grid-column: 1 / span 6;
+    opacity: 0.7;
+  }
+  
+  .my-story__aside-items {
+    grid-column: 7 / span 4;
+    grid-row: 10;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  
+  h2.my-story__title, .my-story__title-label {
+    text-align: left;
+  }
+  
+  .my-story__film-preview {
+    width: calc(100% + var(--grid-cell-width));
+    margin-left: calc(-1 * var(--grid-cell-width));
+    max-width: 700px;
+  }
+}
+
+/** travel videos **/
+
+.travel-videos__content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2em;
+  align-items: center;
+}
+
+.travel-videos__image {
+  max-width: 90%;
+  height: auto;
+  width: 400px;
+}
+
+.travel-videos__right {
+  padding: 1em;
+}
+
+.travel-videos__quote {
+  padding: 0.25em 0 0.25em 1em;
+  margin-bottom: 1em;
+  font-size: 1.125rem;
+  border-left: 2px solid var(--color-contrast);
+  max-width: 60ch;
+}
+
+.travel-videos__quote-author {
+  padding-top: 0.25em;
+  display: inline-block;
+}
+
+.travel-videos__quote-author::before {
+  content: "— ";
+  padding-left: 1ch;
+}
+
+
+@media only screen and (min-width: 75rem) {
+  .travel-videos__content {
+    flex-direction: row;
+  }
+}
+
+/** blog **/
+
+.blog__image {
+  margin: 1em 0;
 }
 
 /** footer **/
