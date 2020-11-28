@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Asap&family=Playfair+Display:ital,wght@1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital@0;1&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap");
 
 :root,
 body {
@@ -18,7 +18,7 @@ body {
 
   font-family: "Asap";
   font-size: 16px;
-  
+
   background-color: var(--color-fill);
   color: var(--color-contrast);
 
@@ -40,8 +40,13 @@ a:focus {
   outline: 2px dotted var(--color-contrast);
 }
 
-p, blockquote {
+p,
+blockquote {
   margin: 0;
+}
+
+br {
+  display: none;
 }
 
 .button {
@@ -57,7 +62,8 @@ p, blockquote {
   transition-property: color, background-color;
 }
 
-.button:hover, .button:focus {
+.button:hover,
+.button:focus {
   text-decoration: none;
   background-color: var(--color-fill-alternate);
   color: var(--color-primary);
@@ -102,7 +108,8 @@ p, blockquote {
   margin-top: 0.5em;
 }
 
-.labelled-heading__label.labelled-heading--label-before .labelled-heading__label {
+.labelled-heading__label.labelled-heading--label-before
+  .labelled-heading__label {
   margin-bottom: -0.5em;
 }
 
@@ -132,7 +139,8 @@ p, blockquote {
   letter-spacing: 0.125em;
 }
 
-.header__subtitle::before, .header__subtitle::after {
+.header__subtitle::before,
+.header__subtitle::after {
   content: "";
   border: 0.5px solid var(--color-tertiary);
   width: 2em;
@@ -214,18 +222,19 @@ p, blockquote {
     grid-column: 1 / span 6;
     opacity: 0.7;
   }
-  
+
   .my-story__aside-items {
     grid-column: 7 / span 4;
     grid-row: 10;
     justify-content: flex-end;
     align-items: flex-start;
   }
-  
-  h2.my-story__title, .my-story__title-label {
+
+  h2.my-story__title,
+  .my-story__title-label {
     text-align: left;
   }
-  
+
   .my-story__film-preview {
     width: calc(100% + var(--grid-cell-width));
     margin-left: calc(-1 * var(--grid-cell-width));
@@ -270,7 +279,6 @@ p, blockquote {
   padding-left: 1ch;
 }
 
-
 @media only screen and (min-width: 75rem) {
   .travel-videos__content {
     flex-direction: row;
@@ -281,6 +289,67 @@ p, blockquote {
 
 .blog__image {
   margin: 1em 0;
+}
+
+/** collaborations **/
+
+/*** gallery ***/
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin: 1em;
+  justify-content: center;
+}
+
+.gallery__item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em;
+  background-color: var(--color-contrast);
+}
+
+.gallery__image {
+  margin: 0;
+  padding: 0;
+  width: 400px;
+  max-width: 90vw;
+}
+
+.gallery__item-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--color-wash);
+  color: var(--color-fill-alternate);
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.125em;
+  padding: 1em;
+  text-align: center;
+  transition: opacity var(--transition-base-duration)
+    var(--transition-timing-function);
+}
+
+.gallery__item .gallery__item-title {
+  opacity: 0;
+}
+
+.gallery__item:hover .gallery__item-title,
+.gallery__item:focus .gallery__item-title {
+  opacity: 1;
 }
 
 /** footer **/
