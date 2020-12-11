@@ -351,7 +351,7 @@ br {
 /*** collaboration ***/
 
 .collaboration {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -360,6 +360,7 @@ br {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .collaboration__content {
@@ -368,7 +369,8 @@ br {
   border-radius: 0.25rem;
   overflow: hidden;
   padding: 1rem;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.0625), 0 15px 12px rgba(0,0,0,0.0625);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.0625),
+    0 15px 12px rgba(0, 0, 0, 0.0625);
   position: relative;
 }
 
@@ -393,7 +395,8 @@ br {
   background-color: var(--color-primary-accent);
 }
 
-.collaboration h3, .collaboration h4 {
+.collaboration h3,
+.collaboration h4 {
   margin: 0;
   font-weight: bold;
   margin-top: 1rem;
@@ -460,7 +463,8 @@ br {
   letter-spacing: 0.01em;
 }
 
-.footer__link:hover, .footer__link:focus {
+.footer__link:hover,
+.footer__link:focus {
   color: var(--color-primary-accent);
 }
 
