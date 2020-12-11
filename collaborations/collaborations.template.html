@@ -7,24 +7,27 @@
     <base href="../" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <header>
-      <img
-        src="media/{IMAGE_NAME}.webp"
-        alt=""
-        width="400"
-        class="collaboration__header-image"
-      />
-      <h3 class="collaboration__title">{PROJECT_TITLE}</h3>
-      <p class="collaboration__subtitle">{PROJECT_SUBTITLE}</p>
-    </header>
-    <main class="collaboration__details">
-      <p>{SUMMARY_OF_PROJECT}</p>
-      <h4>My Role</h4>
-      <p>{SUMMARY_OF_ROLE}</p>
-    </main>
-    <footer class="collaboration__footer">
-      <a href="{PLAYLIST_LINK_URL}" class="button">View Playlist</a>
-    </footer>
+  <body class="collaboration">
+    <div class="collaboration__content">
+      <a class="button collaboration__close-button" href="/#collaborations">Close</a>
+      <header>
+        <img
+          src="media/{IMAGE_NAME}.webp"
+          alt=""
+          width="400"
+          class="collaboration__header-image"
+        />
+        <h3 class="collaboration__title">{PROJECT_TITLE}</h3>
+        <p class="collaboration__subtitle">{PROJECT_SUBTITLE}.</p>
+      </header>
+      <main class="collaboration__details">
+        <p>{SUMMARY_OF_PROJECT}</p>
+        <h4>My Role</h4>
+        <p>{SUMMARY_OF_ROLE}</p>
+      </main>
+      <footer class="collaboration__footer">
+        <a href="{PLAYLIST_LINK_URL}" class="button">View Playlist</a>
+      </footer>
+    </div>
   </body>
 </html>
