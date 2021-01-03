@@ -108,9 +108,33 @@ br {
   margin-top: 0.5em;
 }
 
-.labelled-heading__label.labelled-heading--label-before
-  .labelled-heading__label {
+.labelled-heading__label.labelled-heading--label-before .labelled-heading__label {
   margin-bottom: -0.5em;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-wash);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity var(--transition-base-duration) var(--transition-timing-function);
+}
+
+.modal-container.modal-container--visible {
+  opacity: 1;
+}
+
+.modal-content {
+  border-radius: 0.25rem;
+  overflow: hidden;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.0625), 0 15px 12px rgba(0, 0, 0, 0.0625);
 }
 
 /** header **/
@@ -339,8 +363,7 @@ br {
   letter-spacing: 0.125em;
   padding: 1em;
   text-align: center;
-  transition: background-color var(--transition-base-duration)
-    var(--transition-timing-function);
+  transition: background-color var(--transition-base-duration) var(--transition-timing-function);
 }
 
 .gallery__item:hover .gallery__item-title,
@@ -350,27 +373,22 @@ br {
 
 /*** collaboration ***/
 
-.collaboration {
+/* For styling collaboration viewed as a page instead of a modal. */
+body > .collaboration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: var(--color-wash);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
 }
 
 .collaboration__content {
   max-width: 30rem;
   background-color: var(--color-fill);
-  border-radius: 0.25rem;
-  overflow: hidden;
   padding: 1rem;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.0625),
-    0 15px 12px rgba(0, 0, 0, 0.0625);
   position: relative;
 }
 
@@ -457,8 +475,7 @@ br {
 
 .footer__link {
   color: var(--color-fill-alternate);
-  transition: color var(--transition-base-duration)
-    var(--transition-timing-function);
+  transition: color var(--transition-base-duration) var(--transition-timing-function);
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }

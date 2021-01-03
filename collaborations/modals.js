@@ -1,82 +1,108 @@
 /**
- * @returns {HTMLElement[]}
+ * Bind all modal links to open modals.
  */
-function getModalLinks() {
-  return [...document.getElementsByClassName("gallery__link")];
-}
-
-/**
- * @param {HTMLAnchorElement} link
- */
-function onModalLinkClick(link) {
-  openModal(link.getAttribute("href"));
-}
-
 function bindModalLinks() {
-  getModalLinks().forEach((link) =>
-    link.addEventListener("click", (event) => {
+  for (const link of document.getElementsByClassName("gallery__link")) {
+    link.addEventListener("click", async (event) => {
       event.preventDefault();
-      onModalLinkClick(link);
-    })
-  );
+      const content = await buildCollaborationModal(link.getAttribute("href"));
+      openModal(content);
+    });
+  }
 }
 
 /**
- * @param {string} href
- * @returns {Promise<HTMLDivElement>}
+ * Asynchronously load the modal HTML element from the corresponding collaboration file.
+ * @param {string} href The URL of the page that should be displayed in the modal.
+ * @return {Promise<HTMLDivElement>}
  */
-async function getModalElement(href) {
+async function buildCollaborationModal(href) {
   const fullPageHtml = await (await fetch(href)).text();
-  const container = document.createElement("html");
-  container.innerHTML = fullPageHtml;
-  const modal = container.getElementsByClassName("collaboration")[0];
-  modal.addEventListener("click", (event) => {
-    event.stopPropagation();
-    if (event.target === modal) {
-      onCloseButtonClick(modal);
-    }
-  });
-  getCloseButtons(modal).forEach((button) =>
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      onCloseButtonClick(modal);
-    })
-  );
-  return modal;
+  const modalContent = buildElement(fullPageHtml).getElementsByClassName("collaboration")[0];
+
+  for (const button of modalContent.getElementsByClassName("collaboration__close-button")) {
+    button.classList.add("modal__close-button");
+  }
+
+  return modalContent;
 }
 
 /**
- * @param {string} href
+ * Build and display the content located at the `href` URL in a modal dialog box.
+ * @param {HTMLElement} modalContent Modal element content to display.
  */
-async function openModal(href) {
+async function openModal(modalContent) {
+  modalContent.classList.add("modal-content");
+
   const modalContainer = document.createElement("div");
   modalContainer.classList.add("modal-container");
-  const modalContent = await getModalElement(href);
+
   modalContainer.appendChild(modalContent);
+  bindCloseEvents(modalContainer);
+
   document.body.appendChild(modalContainer);
+
+  // makes the visibility toggle after the element is rendered in the DOM:
+  setTimeout(() => toggleModalVisibility(modalContainer), 50);
 }
 
 /**
- * @param {HTMLDivElement} modal
+ * @param {HTMLElement} modalContainer
  */
-function closeModal(modal) {
-  modal.parentElement.removeChild(modal);
+function bindCloseEvents(modalContainer) {
+  modalContainer.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (event.target === modalContainer) {
+      // clicked on backdrop itself
+      closeModal(modalContainer);
+    }
+  });
+
+  for (const button of modalContainer.getElementsByClassName("modal__close-button")) {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      closeModal(modalContainer);
+    });
+  }
 }
 
 /**
- * @param {HTMLDivElement} modal
+ * @param {HTMLElement} modalContainer
  */
-function getCloseButtons(modal) {
-  return [...modal.getElementsByClassName("collaboration__close-button")];
+function toggleModalVisibility(modalContainer) {
+  return new Promise((resolve) => {
+    modalContainer.addEventListener("transitionend", () => resolve(), { once: true });
+    modalContainer.classList.toggle("modal-container--visible");
+  });
 }
 
 /**
- * @param {HTMLDivElement} link
+ * Remove an HTML element from the DOM.
+ * @param {HTMLDivElement} element The element to remove.
  */
-function onCloseButtonClick(modal) {
-  closeModal(modal);
+function removeElement(element) {
+  element.parentElement.removeChild(element);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  bindModalLinks();
-});
+/**
+ * Handle close button click.
+ * @param {HTMLElement} modalContainer
+ */
+async function closeModal(modalContainer) {
+  await toggleModalVisibility(modalContainer);
+  removeElement(modalContainer);
+}
+
+/**
+ * Build an HTML string into an Element instance contained by a wrapper `<html>` element.
+ * @param {string} html The HTML string to render.
+ * @return {HTMLElement}
+ */
+function buildElement(html) {
+  const container = document.createElement("html");
+  container.innerHTML = html;
+  return container;
+}
+
+document.addEventListener("DOMContentLoaded", () => bindModalLinks());
