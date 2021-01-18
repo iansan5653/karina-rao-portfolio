@@ -19,11 +19,13 @@ body {
   font-family: "Asap";
   font-size: 16px;
 
-  background-color: var(--color-fill);
+  background-color: var(--color-contrast);
   color: var(--color-contrast);
 
   margin: 0;
   scroll-snap-type: y proximity;
+
+  overflow-x: hidden;
 }
 
 a {
@@ -80,6 +82,7 @@ br {
   justify-content: center;
   align-items: center;
   scroll-snap-align: start;
+  background-color: var(--color-fill);
 }
 
 .section:nth-child(even) {
@@ -238,6 +241,12 @@ br {
 @media only screen and (min-width: 50rem) {
   .header {
     font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .header__background-video-container {
+    display: none;
   }
 }
 
