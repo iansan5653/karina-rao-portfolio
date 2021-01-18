@@ -95,7 +95,7 @@ br {
   font-weight: 500;
   font-style: italic;
   letter-spacing: 0.05em;
-  line-height: 1em;
+  line-height: 1.1em;
 }
 
 .labelled-heading__label {
@@ -311,8 +311,18 @@ br {
 
 /** blog **/
 
-.blog__image {
-  margin: 1em 0;
+.blog__grid {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  gap: 1em;
+  margin: 1em;
+  max-width: 90%;
+}
+
+.blog__grid-img {
+  width: 24rem;
+  max-width: 100%;
+  height: auto;
 }
 
 /** collaborations **/
