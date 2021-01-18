@@ -142,16 +142,21 @@ br {
 .header {
   background-color: var(--color-wash);
   color: var(--color-tertiary);
+  font-size: 0.7rem;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
 .header__title {
   margin: 0;
   text-transform: uppercase;
-  font-size: 5rem;
+  font-size: 5em;
   font-family: var(--font-family-headings);
   font-weight: 400;
   letter-spacing: 0.05em;
   z-index: 1;
+  text-align: center;
 }
 
 .header__subtitle {
@@ -159,7 +164,7 @@ br {
   font-weight: 400;
   letter-spacing: 0.05em;
   font-style: italic;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   text-transform: lowercase;
   letter-spacing: 0.125em;
   z-index: 1;
@@ -230,6 +235,12 @@ br {
   z-index: 1;
 }
 
+@media only screen and (min-width: 50rem) {
+  .header {
+    font-size: 1rem;
+  }
+}
+
 /** my story **/
 
 .my-story__content-container {
@@ -253,7 +264,7 @@ br {
 
 .my-story__aside-items {
   grid-column: 2 / span 8;
-  grid-row: 6;
+  grid-row: 3;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -442,6 +453,7 @@ body > .collaboration {
   background-color: var(--color-fill);
   padding: 1rem;
   position: relative;
+  width: 85vw;
 }
 
 .collaboration__close-button {
