@@ -172,20 +172,28 @@ br {
   display: inline-block;
 }
 
-.header__nav {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 0;
+@keyframes scrolldown_fadein {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 75%;
+  }
 }
 
-.header__nav > li {
-  padding: 0.25rem 1rem;
-}
-
-.header__nav a {
-  color: var(--color-tertiary);
+.header__scroll-down-icon {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2.5rem;
+  width: 2.5rem;
+  opacity: 0;
+  animation-name: scrolldown_fadein;
+  animation-timing-function: var(--transition-timing-function);
+  animation-duration: calc(var(--transition-base-duration) * 4);
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
 }
 
 /** my story **/
