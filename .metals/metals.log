@@ -13,3 +13,13 @@
 2020.12.16 10:12:28 WARN  Build server is not auto-connectable.
 2020.12.16 10:12:28 WARN  no build tool detected in workspace 'C:\Users\Ian Sanders\Git Repositories\karina-rao-portfolio'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 2020.12.16 13:31:53 INFO  shutting down Metals
+2021.01.19 12:20:33 INFO  Started: Metals version 0.9.8 in workspace 'C:\Users\Ian Sanders\Git Repositories\karina-rao-portfolio' for client vscode.
+2021.01.19 12:20:34 INFO  time: initialize in 1.25s
+2021.01.19 12:20:36 WARN  Build server is not auto-connectable.
+2021.01.19 12:20:36 WARN  no build tool detected in workspace 'C:\Users\Ian Sanders\Git Repositories\karina-rao-portfolio'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2021.01.21 09:48:18 INFO  shutting down Metals
+[0m2021.01.27 17:56:02 INFO  Started: Metals version 0.9.10 in workspace 'D:\Git Repositories\karina-rao-portfolio' for client vscode 1.53.0-insider.[0m
+[0m2021.01.27 17:56:03 INFO  time: initialize in 0.99s[0m
+[0m2021.01.27 17:56:04 WARN  resetting database: D:\Git Repositories\karina-rao-portfolio\.metals\metals.h2.db[0m
+[0m2021.01.27 17:56:05 WARN  Build server is not auto-connectable.[0m
+[0m2021.01.27 17:56:05 WARN  no build tool detected in workspace 'D:\Git Repositories\karina-rao-portfolio'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m

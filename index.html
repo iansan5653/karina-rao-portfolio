@@ -32,13 +32,14 @@
       <p class="heading-typography header__subtitle">Life through my lens</p>
       <img src="icons/scroll-down.svg" alt="" class="header__scroll-down-icon" />
 
-      <div class="header__background-video-container" aria-hidden="true">
+      <!-- `display: none` prevents from showing when CSS is disabled. -->
+      <div class="header__background-video-container" aria-hidden="true" style="display: none;">
         <video
           playsinline
           autoplay
           muted
           loop
-          poster="media/header-background-video-preview.jpg"
+          poster="media/header-green-pixel.png"
           class="header__background-video"
         >
           <source src="media/header-background-video.mp4" type="video/mp4" />
@@ -121,61 +122,63 @@
       <section class="section collaborations" id="collaborations">
         <h2>Collaborations</h2>
 
-        <ul class="collaborations__gallery gallery">
-          <li class="gallery__item">
-            <a href="collaborations/international-trips.html" class="gallery__link">
-              <img
-                src="media/international-trips-thumbnail.jpg"
-                alt=""
-                width="400"
-                class="gallery__image"
-              />
-              <br />
-              <span class="gallery__item-title">
-                <span>International Trips</span>
-              </span>
-            </a>
-          </li>
+        <div class="collaborations__gallery gallery">
+          <div class="gallery__row">
+            <figure class="gallery__item">
+              <a href="collaborations/international-trips.html" class="gallery__link">
+                <img
+                  src="media/international-trips-thumbnail.jpg"
+                  alt=""
+                  width="400"
+                  class="gallery__image"
+                />
+                <br />
+                <span class="gallery__item-title">
+                  <span>International Trips</span>
+                </span>
+              </a>
+            </figure>
+            <figure class="gallery__item">
+              <a href="collaborations/honors-faculty-bios.html" class="gallery__link">
+                <img
+                  src="media/honors-faculty-bios-thumbnail.jpg"
+                  alt=""
+                  width="400"
+                  class="gallery__image"
+                />
+                <br />
+                <span class="gallery__item-title">
+                  <span>Honors Faculty Bios</span>
+                </span>
+              </a>
+            </figure>
+          </div>
 
-          <li class="gallery__item">
-            <a href="collaborations/honors-faculty-bios.html" class="gallery__link">
-              <img
-                src="media/honors-faculty-bios-thumbnail.jpg"
-                alt=""
-                width="400"
-                class="gallery__image"
-              />
-              <br />
-              <span class="gallery__item-title">
-                <span>Honors Faculty Bios</span>
-              </span>
-            </a>
-          </li>
-
-          <li class="gallery__item">
-            <a href="collaborations/small-shoes-big-journey.html" class="gallery__link">
-              <img
-                src="media/small-shoes-big-journey-thumbnail.jpg"
-                alt=""
-                width="400"
-                class="gallery__image"
-              />
-              <br />
-              <span class="gallery__item-title">
-                <span>Small Shoes, Big Journey</span>
-              </span>
-            </a>
-          </li>
-
-          <li class="gallery__item">
-            <a href="collaborations/fras-2016.html" class="gallery__link">
-              <img src="media/fras-2016-thumbnail.jpg" alt="" width="400" class="gallery__image" />
-              <br />
-              <span class="gallery__item-title">
-                <span>USF FRAS 2016</span>
-              </span>
-            </a>
-          </li>
+          <div class="gallery__row">
+            <figure class="gallery__item">
+              <a href="collaborations/small-shoes-big-journey.html" class="gallery__link">
+                <img
+                  src="media/small-shoes-big-journey-thumbnail.jpg"
+                  alt=""
+                  width="400"
+                  class="gallery__image"
+                />
+                <br />
+                <span class="gallery__item-title">
+                  <span>Small Shoes, Big Journey</span>
+                </span>
+              </a>
+            </figure>
+            <figure class="gallery__item">
+              <a href="collaborations/fras-2016.html" class="gallery__link">
+                <img src="media/fras-2016-thumbnail.jpg" alt="" width="400" class="gallery__image" />
+                <br />
+                <span class="gallery__item-title">
+                  <span>USF FRAS 2016</span>
+                </span>
+              </a>
+            </figure>
+          </div>
         </ul>
       </section>
 
